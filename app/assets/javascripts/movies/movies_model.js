@@ -8,15 +8,20 @@ MOVIES.model = (function() {
   }
 
   var all = function all(){
-    return fetch('/movies.json').then( function(r) {
-      if (r.ok) {
+    return $.get({
+        url:'/movies.json'
+      }).done( function(r) {
         _movies = r;
-      }
-    });
+      });
   };
+
+  var getMovies = function getMovies() {
+    return _movies;
+  }
 
   return {
     init: init,
-    all: all
+    all: all,
+    getMovies: getMovies
   }
 })();

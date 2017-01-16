@@ -5,13 +5,14 @@ MOVIES.view = (function($) {
 
   var init = function() {
     _$table = $('#movies-table');
+    _attachFormHandler();
   }
 
   var addMovies = function(movies) {
-    movies.forEach( function(movie) {
-        _addMovie(movie) })
-    })
-  }
+    movies.forEach(function(movie) {
+        _addMovie(movie); 
+    });
+  };
 
   var _addMovie = function(movie) {
     var $row = $('<tr>')
@@ -22,6 +23,10 @@ MOVIES.view = (function($) {
     $row.append($release_date);
     _$table.append($row);
   }
+
+  var _attachFormHandler = function() {
+    
+  };
 
   return {
     init: init,

@@ -5,3 +5,9 @@
     <th>Release Date</th>
   </tr>
 </table>
+<%= form_tag movies_path, method: :post do %>
+  <%= label_tag :title %>
+  <%= text_field_tag :title %>
+  <br>
+  <%= submit_tag %>
+<% end %>
