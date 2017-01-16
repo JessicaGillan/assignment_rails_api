@@ -5,7 +5,6 @@ MOVIES.view = (function($) {
 
   var init = function(formHandler) {
     _$tableBody = $('#movie-table-body');
-    _$submit = $('#submit-movie')
     _attachFormHandler(formHandler);
   }
 
@@ -15,7 +14,6 @@ MOVIES.view = (function($) {
     movies.forEach(function(movie) {
         _addMovie(movie);
     });
-    _$submit.prop('disabled', false);
   };
 
   var _addMovie = function(movie) {
@@ -33,6 +31,7 @@ MOVIES.view = (function($) {
 
     $movieForm.submit( function(e) {
       e.preventDefault();
+
       formHandler($(e.target).serialize());
     })
   };

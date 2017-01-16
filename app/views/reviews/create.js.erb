@@ -1,0 +1,6 @@
+$tr = $("<%= j(render @review) %>").hide()
+
+$('#review-table-body').prepend($tr)
+
+
+$('#new_review')[0].reset()
