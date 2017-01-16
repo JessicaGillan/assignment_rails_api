@@ -1,13 +1,16 @@
-var MovieModule = (function($) {
+var MOVIES = MOVIES || {};
+
+MOVIES.view = (function($) {
+  var _$table;
 
   var init = function() {
-    console.log('initing');
     _$table = $('#movies-table');
-    _addMovies(_getMovies());
   }
 
-  var _addMovies = function(movies) {
-
+  var addMovies = function(movies) {
+    movies.forEach( function(movie) {
+        _addMovie(movie) })
+    })
   }
 
   var _addMovie = function(movie) {
@@ -20,18 +23,8 @@ var MovieModule = (function($) {
     _$table.append($row);
   }
 
-  var _getMovies = function() {
-    $.get({url:'/movies.json'}).always(function(r){console.log(r)})
-  }
-
-  var _$table;
-
   return {
-    init: init
+    init: init,
+    addMovies: addMovies
   }
 })($);
-
-$(document).ready(function(){
-  console.log("hey")
-  MovieModule.init();
-});
