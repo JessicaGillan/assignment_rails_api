@@ -2,10 +2,10 @@
 <%= label_tag :title %>
 <%= text_field_tag 'movie[title]'  %>
 <br>
-<%= submit_tag "Add Movie" %>
+<%= submit_tag "Add Movie", id: 'submit-movie' %>
 <% end %>
 
-<table id="movies-table" data-controller-name="<%= controller_name %>" data-controller-action="<%= action_name %>">
+<table id="movies-table">
   <!-- render movies -->
   <tr>
     <th>Name</th>

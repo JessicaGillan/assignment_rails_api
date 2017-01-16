@@ -20,7 +20,6 @@ MOVIES.model = (function() {
   }
 
   var addMovie = function addMovie(data) {
-    console.log(JSON.stringify(data));
     return $.ajax({
             url: '/movies.json',
             method: "POST",
@@ -29,9 +28,6 @@ MOVIES.model = (function() {
             success: function( r ){
               console.log(r.title);
               _movies.unshift(r);
-            },
-            complete: function( r ){
-              console.log(r);
             }
           });
   }
