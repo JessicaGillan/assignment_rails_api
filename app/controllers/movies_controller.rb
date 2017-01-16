@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-    
+
     if @movie.save
       respond_to do |format|
         format.json { render json: @movie.reload }
@@ -26,6 +26,6 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.permit(:movie).require(:title)
+    params.require(:movie).permit(:title)
   end
 end

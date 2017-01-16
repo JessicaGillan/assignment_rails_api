@@ -1,16 +1,18 @@
 var MOVIES = MOVIES || {};
 
 MOVIES.view = (function($) {
-  var _$table;
+  var _$tableBody;
 
-  var init = function() {
-    _$table = $('#movies-table');
-    _attachFormHandler();
+  var init = function(formHandler) {
+    _$tableBody = $('#movie-table-body');
+    _attachFormHandler(formHandler);
   }
 
   var addMovies = function(movies) {
+    _$tableBody.html("");
+
     movies.forEach(function(movie) {
-        _addMovie(movie); 
+        _addMovie(movie);
     });
   };
 
@@ -21,11 +23,17 @@ MOVIES.view = (function($) {
     var $release_date = $('<td>').text(movie.release_date);
     $row.append($title);
     $row.append($release_date);
-    _$table.append($row);
+    _$tableBody.append($row);
   }
 
-  var _attachFormHandler = function() {
-    
+  var _attachFormHandler = function(formHandler) {
+    var $movieForm = $('#new-movie-form')
+
+    $movieForm.submit( function(e) {
+      e.preventDefault();
+
+      formHandler($(e.target).serialize());
+    })
   };
 
   return {

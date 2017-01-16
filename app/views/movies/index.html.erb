@@ -1,13 +1,18 @@
+<%= form_tag movies_path, method: :post, id: 'new-movie-form' do %>
+<%= label_tag :title %>
+<%= text_field_tag 'movie[title]'  %>
+<br>
+<%= submit_tag "Add Movie" %>
+<% end %>
+
 <table id="movies-table" data-controller-name="<%= controller_name %>" data-controller-action="<%= action_name %>">
   <!-- render movies -->
   <tr>
     <th>Name</th>
     <th>Release Date</th>
   </tr>
+
+  <tbody id="movie-table-body">
+
+  </tbody>
 </table>
-<%= form_tag movies_path, method: :post do %>
-  <%= label_tag :title %>
-  <%= text_field_tag :title %>
-  <br>
-  <%= submit_tag %>
-<% end %>

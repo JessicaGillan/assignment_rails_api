@@ -19,9 +19,27 @@ MOVIES.model = (function() {
     return _movies;
   }
 
+  var addMovie = function addMovie(data) {
+    console.log(JSON.stringify(data));
+    return $.ajax({
+            url: '/movies.json',
+            method: "POST",
+            data: data,
+            dataType: "json",
+            success: function( r ){
+              console.log(r.title);
+              _movies.unshift(r);
+            },
+            complete: function( r ){
+              console.log(r);
+            }
+          });
+  }
+
   return {
     init: init,
     all: all,
-    getMovies: getMovies
+    getMovies: getMovies,
+    addMovie: addMovie
   }
 })();
